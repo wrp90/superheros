@@ -1,36 +1,42 @@
 const moviesContainer = document.getElementById('movies-container');
-const departedButton = document.getElementById('departed-button');
-const guardiansButton = document.getElementById('guardians-button');
+const killingJoke = document.getElementById('killing-joke');
+const redHood = document.getElementById('red-hood');
+const darkOne = document.getElementById('dark-knight-part-one');
+const darkTwo = document.getElementById('dark-knight-part-two');
 const div = document.createElement('div');
 const img = document.createElement('img');
+const title = document.createElement('p');
+const rated = document.createElement('p');
+const director = document.createElement('p');
+const released = document.createElement('p');
 
-guardiansButton.addEventListener('click', () => {
+
+const showMovie = (id) => {
     fetch(
-        "http://www.omdbapi.com/?i=tt3896198&apikey=1e69acc5"
+        `http://www.omdbapi.com/?i=${id}&apikey=1e69acc5`
     ).then(response => response.json()).then(data =>{
-        // console.log(data)
+        console.log(data)
 
         
-        div.innerText = data.Title;
+        title.innerText = "Title:" + " " + data.Title;
+        rated.innerText = "Rated:" + " " + data.Rated;
+        director.innerText = "Director:" + " " + data.Director;
+        released.innerText = "Released:" + " " + data.Released;
         img.src = data.Poster;
-    
+        div.append(title, rated, director, released);
         moviesContainer.appendChild(div);
-        div.appendChild(img);
+        div.prepend(img);
     })
-})
+};
 
-departedButton.addEventListener('click', () => {
-    fetch(
-        "http://www.omdbapi.com/?i=tt0407887&apikey=1e69acc5"
-    ).then(response => response.json()).then(data =>{
-        // console.log(data)
+killingJoke.addEventListener('click', () => showMovie('tt4853102'));
 
-        
-        div.innerText = data.Title;
-        img.src = data.Poster;
-    
-        moviesContainer.appendChild(div);
-        div.appendChild(img);
-    })
-})
+redHood.addEventListener('click', () => showMovie('tt1569923'));
+
+darkOne.addEventListener('click', () => showMovie('tt2313197'));
+
+darkTwo.addEventListener('click', () => showMovie('tt2166834'));
+
+
+
 
