@@ -12,7 +12,7 @@ const released = document.createElement('p');
 
 const showMovie = (id) => {
     fetch(
-        `http://www.omdbapi.com/?i=${id}&apikey=1e69acc5`
+        `https://www.omdbapi.com/?i=${id}&apikey=1e69acc5`
     ).then(response => response.json()).then(data =>{
         console.log(data)
         title.innerText = "Title:" + " " + data.Title;
