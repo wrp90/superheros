@@ -10,14 +10,11 @@ const rated = document.createElement('p');
 const director = document.createElement('p');
 const released = document.createElement('p');
 
-
 const showMovie = (id) => {
     fetch(
         `http://www.omdbapi.com/?i=${id}&apikey=1e69acc5`
     ).then(response => response.json()).then(data =>{
         console.log(data)
-
-        
         title.innerText = "Title:" + " " + data.Title;
         rated.innerText = "Rated:" + " " + data.Rated;
         director.innerText = "Director:" + " " + data.Director;
@@ -30,11 +27,8 @@ const showMovie = (id) => {
 };
 
 killingJoke.addEventListener('click', () => showMovie('tt4853102'));
-
 redHood.addEventListener('click', () => showMovie('tt1569923'));
-
 darkOne.addEventListener('click', () => showMovie('tt2313197'));
-
 darkTwo.addEventListener('click', () => showMovie('tt2166834'));
 
 
